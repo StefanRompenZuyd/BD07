@@ -1,3 +1,4 @@
+[![CDCI-BD07](https://github.com/sRompen/BD07/actions/workflows/main.yml/badge.svg)](https://github.com/sRompen/BD07/actions/workflows/main.yml)
 # BD07: Ondersteuning bij medicatie
 
 Welkom op de repo van BD07. Dit is ons VCS voor dit blok. 

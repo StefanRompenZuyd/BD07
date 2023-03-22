@@ -43,7 +43,7 @@ jobs:
         uses: mikesprague/teams-incoming-webhook-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}        
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
           deploy-card: true
           title: 'Linting successful!'
           color: 'success'     
@@ -81,11 +81,8 @@ jobs:
       uses: mikesprague/teams-incoming-webhook-action@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}        
-        webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+        webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
         deploy-card: true
         title: 'Build was succesful!'
         color: 'success'
         
-        
-
-  

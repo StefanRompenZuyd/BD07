@@ -28,7 +28,7 @@ jobs:
           DEFAULT_BRANCH: "master"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Notify MS Teams ERROR
+      - name: Notify MS Teams ERROR in linter
         if: ${{ failure() }}
         uses: mikesprague/teams-incoming-webhook-action@v1
         with:
@@ -38,7 +38,7 @@ jobs:
           title: 'Linting error!'
           color: 'failure'
 
-      - name: Notify MS Teams SUCCESS
+      - name: Notify MS Teams SUCCESS in linter
         if: ${{ success() }}
         uses: mikesprague/teams-incoming-webhook-action@v1
         with:
@@ -66,7 +66,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
   
-    - name: Notify MS Teams ERROR
+    - name: Notify MS Teams ERROR for build
       if: ${{ failure() }}
       uses: mikesprague/teams-incoming-webhook-action@v1
       with:
@@ -76,14 +76,14 @@ jobs:
         title: 'Build error!'
         color: 'failure'
         
-    - name: Notify MS Teams SUCCESS
+    - name: Notify MS Teams SUCCESS for build
       if: ${{ success() }}
       uses: mikesprague/teams-incoming-webhook-action@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}        
         webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
         deploy-card: true
-        title: 'Deployment Successful!'
+        title: 'Build was succesful!'
         color: 'success'
         
         

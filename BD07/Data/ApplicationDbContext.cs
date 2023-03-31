@@ -9,5 +9,7 @@ namespace BD07.Data
             : base(options)
         {
         }
+        public DbSet<BD07.Models.User>? User { get; set; }
+        public DbSet<BD07.Models.Persciption>? Perscription { get; set; }
     }
 }

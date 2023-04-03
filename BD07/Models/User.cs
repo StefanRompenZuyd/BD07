@@ -14,7 +14,7 @@ namespace BD07.Models
         public DateTime Birthdate { get; set; }
         [EnumDataType(typeof(TreatmentStatusEnum))]
         public TreatmentStatusEnum TreatmentStatus { get; set; }
-        public List<Persciption> Perscriptions { get; set; }
+        public List<Prescription> Perscriptions { get; set; }
         public string MedicalInfo { get; set; }
 
 

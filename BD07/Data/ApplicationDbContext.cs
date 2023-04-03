@@ -10,6 +10,6 @@ namespace BD07.Data
         {
         }
         public DbSet<BD07.Models.User>? User { get; set; }
-        public DbSet<BD07.Models.Persciption>? Perscription { get; set; }
+        public DbSet<BD07.Models.Prescription>? Perscription { get; set; }
     }
 }

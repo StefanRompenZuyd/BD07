@@ -1,4 +1,5 @@
 ﻿
+using BD07.Models;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
@@ -14,7 +15,7 @@ namespace BD07.Utilities
 {
     public class GoogleCalendarApi
     {
-        public void AddEventToCalendar(string eventSummary, string eventLocation, DateTime startTime, DateTime endTime)
+        public void AddEventToCalendar(string eventSummary, string eventLocation, Prescription prescription)
         {
             // Create the CalendarService object
             var service = new CalendarService(new BaseClientService.Initializer()
@@ -23,6 +24,10 @@ namespace BD07.Utilities
                 ApplicationName = "MyMed"
             });
 
+            // Set the start and end time of the event
+            var eventStartTime = prescription.Schedule;
+            var eventEndTime = prescription.Schedule.AddMinutes(30);
+
             // Create the event
             var newEvent = new Event()
             {
@@ -30,12 +35,12 @@ namespace BD07.Utilities
                 Location = eventLocation,
                 Start = new EventDateTime()
                 {
-                    DateTime = startTime,
+                    DateTime = eventStartTime,
                     TimeZone = "Europe/Amsterdam"
                 },
                 End = new EventDateTime()
                 {
-                    DateTime = endTime,
+                    DateTime = eventEndTime,
                     TimeZone = "Europe/Amsterdam"
                 }
             };

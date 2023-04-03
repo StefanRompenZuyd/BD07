@@ -97,7 +97,7 @@ namespace BD07.Areas.Identity.Pages.Account
             public bool TreatmentStatus { get; set; }
 
             [Required]
-            [Display(Name = "Is er nog andere relevante informatie rondom uw gezondheid?")]
+            [Display(Name = "Andere relevante informatie rondom uw gezondheid?")]
             public string MedicalInfo { get; set; }
 
             /// <summary>

@@ -12,16 +12,34 @@
         <form id="profile-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <input asp-for="Username" class="form-control" disabled />
-                <label asp-for="Username" class="form-label"></label>
-            </div>
-            <div class="form-floating">
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
+
+            <div class="form-floating">
+                <input asp-for="Input.name" class="form-control" />
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+
+
+
         </form>
+        <p>
+            Heeft u nieuwe medicatie gekregen of is er iets veranderd in bijvoorbeeld de dagelijkste inname?
+            Dit kunt u gemakkelijk wijzigen. Klik op de onderstaande knop.
+        </p>
+        <button class="w-100 btn btn-lg btn-primary">Medicatie aanpassen</button>
+
+        <p>
+            Nieuwe arts of wijkverpleegkundige? Veelal worden dit soort wijzigingen automatisch verwerkt.
+            Klopt de informatie toch niet of is deze onvolledig? Via de onderstaande knop brengen wij u
+            in contact met de juiste persoon om dit te wijzigen.
+        </p>
+        <button class="w-100 btn btn-lg btn-primary">Externe gegevens aanpassen</button>
     </div>
 </div>
 

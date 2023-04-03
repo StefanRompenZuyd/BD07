@@ -1,4 +1,6 @@
 ﻿@page
+@using BD07.Enums
+
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -40,6 +42,21 @@
                 <label asp-for="Input.Lastname"></label>
                 <span asp-validation-for="Input.Lastname" class="text-danger"></span>
             </div>
+
+@*            <div class="form-floating">
+                <input asp-for="Input.TreatmentStatus" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.TreatmentStatus"></label>
+                <span asp-validation-for="Input.TreatmentStatus" class="text-danger"></span>
+            </div>*@
+
+ @*           <div class="form-floating">
+                <select asp-for="Input.TreatmentStatus" class="form-control"
+                        asp-items="Html.GetEnumSelectList<TreatmentStatusEnum.>()">
+                    <option selected="selected" value="">Kies</option>
+                </select>
+                <label asp-for="Input.TreatmentStatus" class="control-label"></label>
+                <span asp-validation-for="Input.TreatmentStatus" class="text-danger"></span>
+            </div>*@
 
             <div class="form-floating">
                 <input asp-for="Input.MedicalInfo" class="form-control" autocomplete="new-password" aria-required="true" />

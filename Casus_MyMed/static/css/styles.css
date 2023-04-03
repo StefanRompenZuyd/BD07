@@ -1,0 +1,116 @@
+body{
+    color: black;
+}
+p{
+    color: black;
+}
+h2{
+    color: black;
+}
+.navbar-brand{
+    color: #ed1b34;
+}
+
+.titleBackground{
+  margin: auto;
+  color: white;
+  width: 60%;
+    max-width: 90%;
+    padding:20px;
+    width:710px;
+    position:relative;
+    background: rgb(32, 32, 32); /* Fallback for older browsers without RGBA-support */
+    background: rgba(32, 32, 32, 0.8);
+  padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 300px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.fixed-top{
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0;
+    margin-bottom: 10%;
+}
+.navbar-nav .nav-link:hover::after, .navbar-nav .nav-item.active .nav-link::after{
+    color: #ed1b34;
+}
+.navbar-nav .nav-link::after{
+    content: url('../image/zuyd.png');
+}
+.parallax {
+    /* The image used */
+    background-image: url("../image/Wallpaper.jpeg");
+
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.zuydlogo::before {
+    content: url('../image/zuyd.png');
+}
+
+.sogetilogo{
+    content: url('../image/sogetilogo.png');
+    width: 32px;
+    height:  32px;
+}
+
+.geneticImage {
+    width: 100%;
+    height: 100%;
+}
+
+/*Styling of demonstrator part */
+/* Styling for test */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Here's the important part of the Bar */
+#progressbar {
+	position: fixed;
+	height: 8px;
+	z-index: 99;
+
+	top: 0;
+	left: 0;
+	right: calc( 100% );
+
+	background-color: #ed1b34;
+
+	transition: right .5s linear 0s;
+}
+button.btn.btn-primary{
+    background-color: #ed1b34 !important;
+    border-color: #ed1b34;
+    margin-top:20px;
+    margin-bottom: 20px;
+
+}
+#demo{
+    max-height: 25%;
+    overflow-y: visible;
+}
+.logstableRow{
+    max-height: 28rem;
+    display: block;
+    overflow-y: scroll;
+}
+
+.footerCredits{
+    display: inline-block;
+    max-width: 23%;
+}

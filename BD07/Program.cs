@@ -1,4 +1,6 @@
 using BD07.Data;
+using BD07.Services;
+using BD07.Services.pub;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +14,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddSingleton<INotificationManager, NotificationManager>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

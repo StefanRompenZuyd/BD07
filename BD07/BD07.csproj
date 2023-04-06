@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
     <Folder Include="Areas\Medication\" />
     <Folder Include="Data\Migrations\" />
   </ItemGroup>

@@ -16,8 +16,5 @@ namespace BD07.Models
         public TreatmentStatusEnum TreatmentStatus { get; set; }
         public List<Persciption> Persciptions { get; set; }
         public string MedicalInfo { get; set; }
-
-
-
     }
 }

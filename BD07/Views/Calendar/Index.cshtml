@@ -14,11 +14,20 @@
         <tr>
             <th>
                 Event Title
+
             </th>
-            @foreach(var item in ViewBag.Eventlist)
+            <th>Naam</th>
+            <th>Description</th>
+            <th>Start Tijd</th>
+            <th>Eind Tijd</th>
+            @foreach(var item in ViewBag.Eventlist as List<BD07.Controllers.calendarEvent>)
             {
                 <tr>
-                    <td>@item</td>
+                    <td>@item.Summary</td>
+                    <td>@item.Organizer</td>
+                    <td>@item.Description</td>
+                    <td>@item.startTime</td>
+                    <td>@item.endTime</td>
                 </tr>
             }
         </tr>

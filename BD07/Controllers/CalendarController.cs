@@ -13,9 +13,17 @@ using Google.Apis.Util.Store;
 
 namespace BD07.Controllers
 {
+    public class calendarEvent
+    {
+        public string Summary { get; set; }
+        public string Organizer { get; set; }
+        public string Description { get; set; }
+        public String startTime { get; set; }
+        public String endTime { get; set; }
+    }
     public class CalendarController : Controller
     {
-        public List<string> GoogleEvents = new List<string>();
+        public List<calendarEvent> GoogleEvents = new List<calendarEvent>();
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         static string ApplicationName = "MyMed";
         //GET: Home
@@ -59,7 +67,13 @@ namespace BD07.Controllers
             {
                 foreach(var eventItem in events.Items)
                 {
-                    GoogleEvents.Add(eventItem.Summary);
+                    var GoogleCalendarEvent = new calendarEvent();
+                    GoogleCalendarEvent.Organizer = eventItem.Organizer.DisplayName;
+                    GoogleCalendarEvent.Summary = eventItem.Summary;
+                    GoogleCalendarEvent.startTime = eventItem.Start.DateTime.ToString();
+                    GoogleCalendarEvent.endTime = eventItem.End.DateTime.ToString();
+                    GoogleCalendarEvent.Description = eventItem.Description;
+                    GoogleEvents.Add(GoogleCalendarEvent);
                 }
             }
         }

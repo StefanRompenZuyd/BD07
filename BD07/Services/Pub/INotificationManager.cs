@@ -7,6 +7,5 @@ namespace BD07.Services.pub
     {
         public Task<Notification> SendNotificationAsync(string userId, string title, string body, ENotificationPriority priority);
         public Task<Notification> SendNotificationAsync(string userId, string title, string body, ENotificationPriority priority, ENotificationChannel notificationChannels);
-        public Task MarkNotificationAsReadAsync(string notificationId);
     }
 }

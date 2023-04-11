@@ -17,12 +17,6 @@ namespace BD07.Services
             _notificators = notificators;
         }
 
-        public Task MarkNotificationAsReadAsync(string notificationId)
-        {
-            //TODO: remove notificationId in database
-            return Task.CompletedTask;
-        }
-
         public Task<Notification> SendNotificationAsync(string userId, string title, string body, ENotificationPriority priority)
         {
             return SendNotificationAsync(userId, title, body, priority, _allNotificationChannels);

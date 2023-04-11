@@ -143,3 +143,26 @@ jobs:
         title: 'Build was succesful!'
         color: 'success'
         
+        
+  deploy:
+      runs-on: windows-latest
+      needs: build
+      environment:
+        name: 'Production'
+        url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+      steps:
+        - name: Download artifact from build job
+          uses: actions/download-artifact@v2
+          with:
+            name: .net-app
+
+        - name: Deploy to Azure Web App
+          id: deploy-to-webapp
+          uses: azure/webapps-deploy@v2
+          with:
+            app-name: 'BD07'
+            slot-name: 'Production'
+            publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D1207A6F749147639B77AE2B16BE2187 }}
+            package: .
+        

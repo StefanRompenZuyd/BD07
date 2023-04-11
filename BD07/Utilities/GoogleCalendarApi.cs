@@ -19,11 +19,6 @@ namespace BD07.Utilities
         private readonly CalendarService _calendarService;
 
         public GoogleCalendarApi() {
-        
-        }
-        
-        public void AddEventToCalendar(string eventSummary, string eventLocation, Persciption prescription)
-        {
             // Create the CalendarService object
             _calendarService = new CalendarService(new BaseClientService.Initializer()
             {
@@ -31,6 +26,13 @@ namespace BD07.Utilities
                 ApplicationName = "MyMed"
             });
         }
+        
+        /*
+        public void AddEventToCalendar(string eventSummary, string eventLocation, Persciption prescription)
+        {
+
+        }
+        */
 
         public void AddEventToCalendar(string eventSummary, string eventLocation, Persciption prescription)
         {

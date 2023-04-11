@@ -108,22 +108,22 @@ jobs:
       
   build:
     runs-on: windows-latest
-
+    needs: run-lint
     steps:
       - uses: actions/checkout@v2
-
+      
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
           include-prerelease: true
-
+          
       - name: Build with dotnet
         run: dotnet build --configuration Release
-
+        
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-
+        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -139,7 +139,7 @@ jobs:
           deploy-card: true
           title: 'Building error!'
           color: 'failure'
-
+          
       - name: Notify MS Teams SUCCESS in BUILD
         if: ${{ success() }}
         uses: mikesprague/teams-incoming-webhook-action@v1
@@ -172,7 +172,8 @@ jobs:
             slot-name: 'Production'
             publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D1207A6F749147639B77AE2B16BE2187 }}
             package: .
-        - name: Notify MS Teams ERROR in BUILD
+            
+        - name: Notify MS Teams ERROR in DEPLOYMENT
           if: ${{ failure() }}
           uses: mikesprague/teams-incoming-webhook-action@v1
           with:
@@ -182,7 +183,7 @@ jobs:
             title: 'Deployment error!'
             color: 'failure'
 
-        - name: Notify MS Teams SUCCESS in BUILD
+        - name: Notify MS Teams SUCCESS in DEPLOYMENT
           if: ${{ success() }}
           uses: mikesprague/teams-incoming-webhook-action@v1
           with:

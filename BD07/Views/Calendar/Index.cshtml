@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.title = "Calendar";
+}
+
+<h2>Calendar</h2>
+<h3>Upcoming events</h3>
+
+@if (ViewBag.Eventlist!=null)
+{
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Event Title
+
+            </th>
+            <th>Naam</th>
+            <th>Description</th>
+            <th>Start Tijd</th>
+            <th>Eind Tijd</th>
+            @foreach(var item in ViewBag.Eventlist as List<BD07.Controllers.calendarEvent>)
+            {
+                <tr>
+                    <td>@item.Summary</td>
+                    <td>@item.Organizer</td>
+                    <td>@item.Description</td>
+                    <td>@item.startTime</td>
+                    <td>@item.endTime</td>
+                </tr>
+            }
+        </tr>
+    </table>
+}
+else {
+    <div class="alert alert-danger">No Upcoming events</div>
+}

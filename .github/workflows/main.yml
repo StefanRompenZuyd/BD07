@@ -5,10 +5,10 @@ on:
     paths-ignore:
       - "README.md"
     branches: [ "master" ]
-  pull_request:
-    paths-ignore:
-      - "README.md"
-    branches: [ "master" ]
+  # pull_request:
+    # paths-ignore:
+      # - "README.md"
+    # branches: [ "master" ]
 
 jobs:
   analyze:

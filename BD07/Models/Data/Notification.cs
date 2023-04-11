@@ -14,7 +14,7 @@ namespace BD07.Models.Data
 
         public User? ForUser { get; set; }
 
-        public Notification(string id, string title, string body, ENotificationChannel channels, DateTimeOffset sendOn, string forUserId, bool isRead)
+        public Notification(string id, string title, string body, ENotificationChannel channels, DateTimeOffset sendOn, string forUserId)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id));
             Title = title ?? throw new ArgumentNullException(nameof(title));
@@ -22,7 +22,6 @@ namespace BD07.Models.Data
             Channels = channels;
             SendOn = sendOn;
             ForUserId = forUserId ?? throw new ArgumentNullException(nameof(forUserId));
-            IsRead = isRead;
         }
     }
 }

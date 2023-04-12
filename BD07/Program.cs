@@ -1,11 +1,18 @@
-using BD07.Data;
+﻿using BD07.Data;
 using BD07.Services;
 using BD07.Services.pub;
 using Microsoft.AspNetCore.Identity;
 using BD07.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<BD07MedicineContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BD07MedicineContext") ?? throw new InvalidOperationException("Connection string 'BD07MedicineContext' not found.")));
+
+builder.Services.AddRazorPages();
+builder.Services.AddDbContext<MyMedContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyMedContext") ?? throw new InvalidOperationException("Connection string 'MyMedContext' not found.")));
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

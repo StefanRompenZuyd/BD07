@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BD07.Models
 {
+    using System;
+    using System.Collections.Generic;
     public class User : IdentityUser
     {
         [Required(ErrorMessage = "Voornaam is verplicht.")]

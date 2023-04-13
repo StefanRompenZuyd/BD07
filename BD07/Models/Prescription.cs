@@ -1,6 +1,6 @@
 ﻿namespace BD07.Models
 {
-    public class Persciption
+    public class Presciption
     {
         public int Id { get; set; }
         public ICollection<Medicine> ID { get; set; }

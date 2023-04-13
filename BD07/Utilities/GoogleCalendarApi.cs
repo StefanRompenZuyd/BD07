@@ -34,7 +34,7 @@ namespace BD07.Utilities
         }
         */
 
-        public void AddEventToCalendar(string eventSummary, string eventLocation, Presciption prescription)
+        public void AddEventToCalendar(string eventSummary, string eventLocation, Prescription prescription)
         {
             // Set the start and end time of the event
             var eventStartTime = prescription.Schedule;

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using BD07.Enums;
 
 namespace BD07.Areas.Identity.Pages.Account
 {
@@ -95,6 +96,9 @@ namespace BD07.Areas.Identity.Pages.Account
             [Display(Name = "Belangrijke aanvullende info:")]
             public string MedicalInfo { get; set; }
 
+            [EnumDataType(typeof(TreatmentStatusEnum))]
+            public TreatmentStatusEnum TreatmentStatus { get; set; }
+
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -134,8 +138,9 @@ namespace BD07.Areas.Identity.Pages.Account
                 user.LastName = Input.LastName;
                 user.Birthdate = Input.BirthDate;
                 user.MedicalInfo = Input.MedicalInfo;
+                user.TreatmentStatus = Input.TreatmentStatus;
 
-                await _userStore.SetUserNameAsync(user, Input.FirstName, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 

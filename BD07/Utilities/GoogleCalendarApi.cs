@@ -15,7 +15,7 @@ namespace BD07.Utilities
 {
     public class GoogleCalendarApi
     {
-        public void AddEventToCalendar(string eventSummary, string eventLocation, Persciption prescription)
+        public void AddEventToCalendar(string eventSummary, string eventLocation, Prescription prescription)
         {
             // Create the CalendarService object
             var service = new CalendarService(new BaseClientService.Initializer()

@@ -1,4 +1,5 @@
 ﻿@page
+@using BD07.Enums;
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -12,7 +13,7 @@
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-floating">
+            <div class="form-floating">
                 <input asp-for="Input.FirstName" class="form-control" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.FirstName"></label>
                 <span asp-validation-for="Input.FirstName" class="text-danger"></span>
@@ -28,12 +29,20 @@
                 <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
             </div>
             <div class="form-floating">
+                <select asp-for="Input.TreatmentStatus" class="form-control"
+                        asp-items="Html.GetEnumSelectList<TreatmentStatusEnum>()">
+                    <option selected="selected" value="">Kies</option>
+                </select>
+                <label asp-for="Input.TreatmentStatus" class="control-label"></label>
+                <span asp-validation-for="Input.TreatmentStatus" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
                 <input asp-for="Input.MedicalInfo" class="form-control" />
                 <label asp-for="Input.MedicalInfo"></label>
                 <span asp-validation-for="Input.MedicalInfo" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control"/>
+                <input asp-for="Input.Email" class="form-control" />
                 <label asp-for="Input.Email"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
@@ -59,8 +68,10 @@
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                                article
+                                about setting up this ASP.NET application to support logging in via external services
+                            </a>.
                         </p>
                     </div>
                 }

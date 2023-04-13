@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using BD07.Enums;
 using BD07.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -32,11 +33,18 @@ namespace BD07.Areas.Identity.Pages.Account.Manage
             _emailSender = emailSender;
         }
 
+
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
         public string Email { get; set; }
+
+        [EnumDataType(typeof(TreatmentStatusEnum))]
+        public TreatmentStatusEnum TreatmentStatus { get; set; }
+
+        public string MedicalInfo { get; set; } 
+
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -72,20 +80,29 @@ namespace BD07.Areas.Identity.Pages.Account.Manage
             [EmailAddress]
             [Display(Name = "New email")]
             public string NewEmail { get; set; }
+
+            [Required]
+            [Display(Name = "Gewijzigde info")]
+            public string NewMedicalInfo { get; set; }
         }
+
 
         private async Task LoadAsync(User user)
         {
             var email = await _userManager.GetEmailAsync(user);
+            var medicalInfo = user.MedicalInfo;
             Email = email;
+            MedicalInfo = medicalInfo;
 
             Input = new InputModel
             {
                 NewEmail = email,
+                NewMedicalInfo = medicalInfo,
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
         }
+
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -114,7 +131,7 @@ namespace BD07.Areas.Identity.Pages.Account.Manage
             }
 
             var email = await _userManager.GetEmailAsync(user);
-            if (Input.NewEmail != email)
+            if (user!=null)
             {
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await _userManager.GenerateChangeEmailTokenAsync(user, Input.NewEmail);
@@ -122,7 +139,7 @@ namespace BD07.Areas.Identity.Pages.Account.Manage
                 var callbackUrl = Url.Page(
                     "/Account/ConfirmEmailChange",
                     pageHandler: null,
-                    values: new { area = "Identity", userId = userId, email = Input.NewEmail, code = code },
+                    values: new { area = "Identity", userId = userId, email = Input.NewEmail, code = code, MedicalInfo=Input.NewMedicalInfo },
                     protocol: Request.Scheme);
                 await _emailSender.SendEmailAsync(
                     Input.NewEmail,

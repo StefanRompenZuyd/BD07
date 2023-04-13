@@ -4,6 +4,6 @@ namespace BD07.Services.pub
 {
     public interface IGoogleCalendarApi
     {
-        public void AddEventToCalendar(string eventSummary, string eventLocation, Persciption prescription);
+        public void AddEventToCalendar(string eventSummary, string eventLocation, Presciption prescription);
     }
 }
